@@ -1,7 +1,7 @@
 # ───────────────────────────────────────────────
 [ -f ~/.env ] && source ~/.env
 
-# Powerlevel10k Instant Prompt (залишаємо на самому верху)
+# Powerlevel10k Instant Prompt (keep this at the very top)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -23,11 +23,13 @@ esac
 # Oh My Zsh + Powerlevel10k
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git zsh-autosuggestions)
-
+plugins=(git zsh-autosuggestions alias-tips)
 source $ZSH/oh-my-zsh.sh
 
-# Powerlevel10k config
+
+
+
+# Powerlevel10k configuration
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # ───────────────────────────────────────────────
@@ -43,7 +45,7 @@ source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit
 compinit
 
-# z - навігація по директоріях (після compinit!)
+# z - directory navigation (after compinit!)
 _z_file="$(brew --prefix)/etc/profile.d/z.sh"
 if [ -f "$_z_file" ]; then
   unset -f _z 2>/dev/null
@@ -56,7 +58,7 @@ fi
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # ───────────────────────────────────────────────
-# fzf інтеграція (якщо встановлено)
+# fzf integration (if installed)
 /bin/test -f ~/.fzf.zsh && source ~/.fzf.zsh
 
 # ───────────────────────────────────────────────
@@ -84,8 +86,3 @@ export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
 # ───────────────────────────────────────────────
 # Homebrew
 export HOMEBREW_NO_ENV_HINTS=true
-
-# ───────────────────────────────────────────────
-# alias-tips
-command -v zsh-alias-finder >/dev/null && eval "$(zsh-alias-finder)"
-

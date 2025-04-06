@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Get the current date in YYYYMMDD format
+$DATE=$(date +%Y%m%d)
+
 set -e
 
 echo "🚀 Installing dotfiles and dependencies..."
@@ -19,32 +22,32 @@ echo "🔙 Backing up existing .zshrc and .zsh_aliases..."
 
 # Backup .zshrc if it exists
 if [ -f ~/.zshrc ]; then
-  echo "💾 Backing up ~/.zshrc to ~/.zshrc.backup"
-  cp ~/.zshrc ~/.zshrc.backup
+  echo "💾 Backing up ~/.zshrc to ~/.zshrc.$DATE.bkp"
+  cp ~/.zshrc ~/.zshrc.$DATE.bkp
 fi
 
 # Backup .zsh_aliases if it exists
 if [ -f ~/.zsh_aliases ]; then
-  echo "💾 Backing up ~/.zsh_aliases to ~/.zsh_aliases.backup"
-  cp ~/.zsh_aliases ~/.zsh_aliases.backup
+  echo "💾 Backing up ~/.zsh_aliases to ~/.zsh_aliases.$DATE.bkp"
+  cp ~/.zsh_aliases ~/.zsh_aliases.$DATE.bkp
 fi
 
 # ───────────────────────────────────────────────
 # 3. Create symbolic links for .zshrc and .zsh_aliases
 echo "🔗 Creating symbolic links for .zshrc and .zsh_aliases..."
 
-ln -sf ~/Projects/Floatrx/setup/.zshrc ~/.zshrc
-ln -sf ~/Projects/Floatrx/setup/.zsh_aliases ~/.zsh_aliases
+ln -sf ./setup/.zshrc ~/.zshrc
+ln -sf ./setup/.zsh_aliases ~/.zsh_aliases
 
 # ───────────────────────────────────────────────
 # 4. Run setup scripts for environment configuration
 echo "🔧 Running environment setup scripts..."
 
 # Run Zsh environment setup
-bash ~/Projects/Floatrx/setup/setup-zsh-env.sh
+bash ./setup/setup-zsh-env.sh
 
 # Install additional apps via brew
-bash ~/Projects/Floatrx/setup/brew-apps-setup.sh
+bash ./setup/brew-apps-setup.sh
 
 echo "✅ Done! You can now source ~/.zshrc to apply the changes."
 echo "💡 Don't forget to restart your terminal or run 'source ~/.zshrc'."

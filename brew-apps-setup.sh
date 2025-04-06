@@ -10,6 +10,7 @@ brew upgrade
 
 echo "📦 Installing useful CLI tools..."
 brew install git \
+             nano \
              node \
              oven-sh/bun/bun \
              nvm \
