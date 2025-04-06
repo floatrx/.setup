@@ -1,0 +1,51 @@
+# ───────────────────────────────────────────────
+# General
+alias c="clear"
+alias x="exit"
+alias r="source ~/.zshrc"
+alias h="history -10"
+alias hc="history -c"
+alias hg="history | grep "
+alias t="htop"
+
+# ───────────────────────────────────────────────
+# Bash
+alias .="/bin/bash"
+
+# ───────────────────────────────────────────────
+# File system
+alias ls="ls -G"
+alias rm="rm -rf"
+alias ll='ls -lG'
+alias mkdir="mkdir -pv"
+alias cp="cp -v"
+alias mv="mv -v"
+alias grep="grep --color=auto"
+
+# ───────────────────────────────────────────────
+# Git
+alias gs="git status"
+alias gc="git checkout development && git branch | grep -v \"development\" | xargs git branch -D"
+alias log="git log --oneline"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gpl="git pull"
+alias gps="git push"
+
+# ───────────────────────────────────────────────
+# Vercel
+alias v="vercel"
+
+# ───────────────────────────────────────────────
+# Custom (non-sensitive paths)
+alias po="p --prefix $(pwd)/.tools po"
+alias p="pnpm"
+alias pe="pnpm exec"
+alias wc=". $(pwd)/.warm.cache.sh"
+
+# ───────────────────────────────────────────────
+# z (quick directory navigation) helpers
+alias zz='z -l'
+alias zr='z -r'
+alias zt='z -t'
